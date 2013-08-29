@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'chip/style.css' %}" />
+
+{% if latest_chip_list %}
+    <ul>
+    {% for chip in latest_chip_list %}
+        <li><a href="/chip/{{ chip.id }}/">{{ chip.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No chips are available.</p>
+{% endif %}
