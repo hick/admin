@@ -1,4 +1,6 @@
 {% extends "admin/base_site.html" %}
+
+
 {% load i18n l10n %}
 {% load admin_urls %}
 
@@ -30,7 +32,7 @@
         </ul>
     {% endif %}
 {% else %}
-    <p>{% blocktrans %}Are you sure you want to delete the selected {{ objects_name }}? All of the following objects and their related items will be deleted:{% endblocktrans %}</p>
+    <p>{% blocktrans %} 你确定想要删除下列 {{ objects_name }}? All of the following objects and their related items will be deleted:{% endblocktrans %}</p>
     {% for deletable_object in deletable_objects %}
         <ul>{{ deletable_object|unordered_list }}</ul>
     {% endfor %}
@@ -44,5 +46,17 @@
     <input type="submit" value="{% trans "Yes, I'm sure" %}" />
     </div>
     </form>
+<!-- hick: 以下是我整的自动提交删除，不要再确认了，麻烦 -->
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+<script type="text/javascript">
+django.jQuery("form").submit()
+</script>
+
+
+
 {% endif %}
 {% endblock %}

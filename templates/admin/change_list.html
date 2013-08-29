@@ -90,7 +90,7 @@
       {% endif %}
       {% block result_list %}
           <!-- hick: 列表的表头表位单独定义  -->
-          {% if action_form and actions_on_top and cl.full_result_count %}{% admin_actions %}{% endif %}
+          {% if action_form and actions_on_top and cl.full_result_count %} {% admin_actions %}{% endif %}
           <!-- hick: 列表的表表体了: 实际是 change_list_results.html 文件  -->
           {% result_list cl %}
           <!-- hick: 列表的表头表位单独定义  -->
@@ -105,5 +105,7 @@
 <!-- hick: 页面链接弹出新窗口  -->
   <script type="text/javascript">
   django.jQuery("#result_list tbody a").attr("target", "_blank");
+  // 点 GO 直接选择下列列表的删除
+  django.jQuery("button[name=index]").click(function(){django.jQuery("select[name=action] option[value=delete_selected]").attr("selected",true);return true;});
   </script>
 {% endblock %}
