@@ -107,5 +107,16 @@
   django.jQuery("#result_list tbody a").attr("target", "_blank");
   // 点 GO 直接选择下列列表的删除
   django.jQuery("button[name=index]").click(function(){django.jQuery("select[name=action] option[value=delete_selected]").attr("selected",true);return true;});
+  // url 长度限制
+  django.jQuery("td:contains(http://)").each(function(){  
+    jqTD = django.jQuery(this); 
+    url = jqTD.html();
+    jqTD.attr('title', url); 
+    urlLink = "<a href='" + url + "' target='_blank'>" + url.substring(0, 20) + "</a>";
+    jqTD.html(urlLink);
+  });
+  // django.jQuery("td:contains(http://)").css({'width': '100px', 'overflow': 'hidden','text-overflow': 'ellipsis', 'white-space': 'nowrap'});
+  // 点击行内任何一个地方就选择
+  django.jQuery("#result_list tr").click(function(){   django.jQuery(this).find("input").attr("checked", true)   })
   </script>
 {% endblock %}

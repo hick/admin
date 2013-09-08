@@ -119,6 +119,7 @@ def fetch(request, fetch_url):
         'div#articleShow',
         'div.entry',    ### 伯乐在线： http://blog.jobbole.com/ 的
         'td.t_f',    ### linux.cn
+        'div.bort',    ### donews 的
         'div.artic_text',    ###  www.freebuf.com
         'div#article-content',    ###  http://www.itworld.com/
         'div.story',    ###  http://www.phpdeveloper.org/
