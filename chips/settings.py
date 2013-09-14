@@ -1,5 +1,13 @@
 # Django settings for chips project.
 
+import platform
+
+
+if 'Linux' == platform.system():
+    template_path = "/data/src/chips/templates"
+else:
+    template_path = "F:/Python/Django/chips/templates"
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -109,7 +117,7 @@ ROOT_URLCONF = 'chips.urls'
 WSGI_APPLICATION = 'chips.wsgi.application'
 
 TEMPLATE_DIRS = (
-    'F:/Python/Django/chips/templates',
+    template_path,
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
