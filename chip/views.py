@@ -47,6 +47,15 @@ def fetch(request, fetch_url):
     import time
     import html2text
 
+
+    ### 根据域名来处理
+
+
+    # hickdebug
+    ret_str = fetch_url
+    return HttpResponse("%s" % ret_str)
+
+
     # 追加 spider 包相关控制
     sys.path.insert(0, 'E:\\MyDocument\\KuaiPan\\source\\utls\\spide')
     import utl # 下载 url 等
@@ -81,10 +90,6 @@ def fetch(request, fetch_url):
 
         #http://www.oschina.net/translate/serving-python-web-applications?print
         #http://www.oschina.net/translate/serving-python-web-applications
-
-    # hickdebug
-    # ret_str = url
-    # return HttpResponse("%s" % ret_str)
 
     ### 获得数据源
     post = {} 

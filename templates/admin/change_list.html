@@ -112,7 +112,7 @@
     jqTD = django.jQuery(this); 
     url = jqTD.html();
     jqTD.attr('title', url); 
-    urlLink = "<a href='" + url + "' target='_blank'>" + url.substring(0, 20) + "</a>";
+    urlLink = "<a href='" + url + "' target='_blank'>" + url.substring(0, 30) + "</a>";
     jqTD.html(urlLink);
   });
   // django.jQuery("td:contains(http://)").css({'width': '100px', 'overflow': 'hidden','text-overflow': 'ellipsis', 'white-space': 'nowrap'});

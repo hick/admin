@@ -35,17 +35,18 @@
                         // 修改 form 的 action
                         django.jQuery("#chip_form").attr('action', 'http://www.webrube.com/articles/add');
                         django.jQuery("#chip_form").attr('target', '_blank');
-                        if(django.jQuery("#id_detail").val().length < 10)
+                        // 摘要跟内容相同则去掉内容
+                        if(django.jQuery("#id_detail").val() == django.jQuery("#id_summary").val())
                         {
-                            django.jQuery("#id_detail").val(django.jQuery("#id_summary").val());
+                            django.jQuery("#id_detail").val('');
                         }
                         
 
                         django.jQuery("#idOriginUrl").attr('href', django.jQuery("#id_url").val());
                         django.jQuery("#idGetContent").click(function(){
                         var url = django.jQuery("#id_url").val();
-                        url = url.replace( /\?/g, '_@'  );
-                        django.jQuery.get("/chip/fetch/" + url + '@' + django.jQuery("#id_tags").val().replace(/#/g, '&'), {},function(result){
+                        url = encodeURIComponent(url);
+                        django.jQuery.get("/chip/fetch/" + url , {},function(result){
                             // 为了避免 id_detail 中断行造成的问题，把 id_detail 改名，新建隐藏表单 name="detail" 
                             var DetailInput = django.jQuery("#id_detail");
 
