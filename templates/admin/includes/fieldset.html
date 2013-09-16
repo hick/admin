@@ -28,7 +28,15 @@
                     {% if field.field.name == 'detail' and opts.module_name == 'chip' %}
                     <a href="" id="idGetContent">获取 MD 正文</a>
                     <a href="" id="idOriginUrl" target="blank">查看原文</a>
-                    <script type="text/javascript">
+   
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</fieldset>
+
+                 <script type="text/javascript">
                         // 扩大 url 的长度，方便有些情况下分页
                         django.jQuery('#id_url').css('width', '600px')
 
@@ -41,8 +49,15 @@
                             django.jQuery("#id_detail").val('');
                         }
                         
+                        // var url = django.jQuery("#id_url").val();
+                        // var html = django.jQuery("fieldset.module")[0].outerHTML;
+                        // django.jQuery("fieldset.module").parent().html("<table><tr><td width='750'>" + html + "</td><td width='960'><iframe name='frame1' id='frame1' src='"+url+"' frameborder='1' width='960' height='800'></iframe></td></tr></table>")
 
-                        django.jQuery("#idOriginUrl").attr('href', django.jQuery("#id_url").val());
+                        django.jQuery("#idOriginUrl").click(function(){
+                            var url = django.jQuery("#id_url").val();
+                            django.jQuery("fieldset.module").parent().html("<table><tr><td width='750'>" + django.jQuery("fieldset.module").parent().html() + "</td><td width='960'><iframe name='frame1' id='frame1' src='"+url+"' frameborder='1' width='960' height='800'></iframe></td></tr></table>")
+                            return false;
+                        });
                         django.jQuery("#idGetContent").click(function(){
                         var url = django.jQuery("#id_url").val();
                         url = encodeURIComponent(url);
@@ -77,11 +92,5 @@
                         return false;
                     });
                     </script>
-                    {% endif %}
-                </div>
-            {% endfor %}
-        </div>
-    {% endfor %}
-</fieldset>
 <!-- 注释说明: field.field 是带了编辑的 value 的 input;  field.field.name 是字段名 同理还有 .value -->
 <!-- 注释说明: opts.module_name 是模块/app 名 -->
