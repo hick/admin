@@ -55,6 +55,14 @@
 
                         django.jQuery("#idOriginUrl").click(function(){
                             var url = django.jQuery("#id_url").val();
+                            // 如果是  oschina 等的，则弹出新窗口
+                            var keyStrList = ['oschina'];
+                            for (i in keyStrList){
+                                if(url.indexOf(keyStrList[i]) > 0) {
+                                    window.open(url);
+                                    return false;
+                                }
+                            }
                             django.jQuery("fieldset.module").parent().html("<table><tr><td width='750'>" + django.jQuery("fieldset.module").parent().html() + "</td><td width='960'><iframe name='frame1' id='frame1' src='"+url+"' frameborder='1' width='960' height='800'></iframe></td></tr></table>")
                             return false;
                         });
